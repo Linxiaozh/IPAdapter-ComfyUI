@@ -240,7 +240,7 @@ class IPAdapter:
         if plus:
             cond = outputs.hidden_states[-2]
             with precision_scope(comfy.model_management.get_autocast_device(clip_vision.load_device), torch.float32):
-                uncond = clip_vision.model(torch.zeros_like(pixel_values), output_hidden_states=True).hidden_states[-2]
+                uncond = clip_vision.model(torch.zeros_like(pixel_values)).hidden_states[-2]
         else:
             cond = outputs.image_embeds
             uncond = torch.zeros_like(cond)
