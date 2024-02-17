@@ -235,7 +235,7 @@ class IPAdapter:
             precision_scope = lambda a, b: contextlib.nullcontext(a)
 
         with precision_scope(comfy.model_management.get_autocast_device(clip_vision.load_device), torch.float32):
-            outputs = clip_vision.model(pixel_values=pixel_values, output_hidden_states=True)
+            outputs = clip_vision.model(pixel_values=pixel_values)
 
         if plus:
             cond = outputs.hidden_states[-2]
